@@ -1,0 +1,58 @@
+DROP TABLE IF EXISTS `junction_table`;
+
+CREATE TABLE `junction_table` (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `product_id` int NOT NULL,
+  `category_id1` int NOT NULL,
+  `category_id2` int DEFAULT NULL,
+  `category_id3` int DEFAULT NULL,
+  `category_id4` int DEFAULT NULL
+);
+
+INSERT INTO `junction_table` (`id`, `product_id`, `category_id1`, `category_id2`, `category_id3`, `category_id4`)
+VALUES
+(1, 1, 2, null, null, null),
+(2, 2, 4, 1, null, null),
+(3, 3, 1, null, null, null),
+(4, 4, 3, null, null, null);
+
+DROP TABLE IF EXISTS `categories`;
+
+CREATE TABLE `categories` (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(255) NOT NULL
+);
+
+INSERT INTO `categories` (`id`, `category_name`)
+VALUES
+(1, 'meat'),
+(2, 'fish'),
+(3, 'baked'),
+(4, 'tinned');
+
+DROP TABLE IF EXISTS `products`;
+
+CREATE TABLE `products` (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(255) NOT NULL,
+  `quantity` int NOT NULL,
+  `price` float NOT NULL,
+  `description` varchar(255)
+);
+
+INSERT INTO `products` (`id`, `product_name`, `quantity`, `price`, `description`)
+VALUES
+(1, 'trout', 3, 5.99, 'fishy'),
+(2, 'soup', 1, 0.99, 'creamy'),
+(3, 'steak', 7, 9.99, 'tasty'),
+(4, 'bread', 5, 1.50, 'fluffy');
+
+ALTER TABLE `junction_table` ADD FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+
+ALTER TABLE `junction_table` ADD FOREIGN KEY (`category_id1`) REFERENCES `categories` (`id`);
+
+ALTER TABLE `junction_table` ADD FOREIGN KEY (`category_id2`) REFERENCES `categories` (`id`);
+
+ALTER TABLE `junction_table` ADD FOREIGN KEY (`category_id3`) REFERENCES `categories` (`id`);
+
+ALTER TABLE `junction_table` ADD FOREIGN KEY (`category_id4`) REFERENCES `categories` (`id`);

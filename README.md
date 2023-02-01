@@ -14,4 +14,4 @@ docs folder, into the query tab and click on run all.</p>
 
 <p>Finally just return to your terminal, cd into the project folder and then 
 type './vendor/bin/sail up', you can now open your browser and type in the url
-localhost and you will see the app.</p>
+http://localhost and you will see the app.</p>

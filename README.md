@@ -12,7 +12,8 @@ command: 'git clone git@github.com:RBingham99/rework-digital-app.git'</p>
 a database called 'rework_digital_app' and then copy the sql file, stored in the
 docs folder, into the query tab and click on run all.</p>
 
-<p>Next, return to your terminal, cd into the project folder and run the command 'composer install'.
+<p>Next, return to your terminal, cd into the project folder and run the command
+'composer install' followed by the command 'npm install'.</p>
 
 <p>Finally run the command './vendor/bin/sail up', you can now open your browser and type in the url
 http://localhost and you will see the app.</p>
